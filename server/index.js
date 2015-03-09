@@ -8,8 +8,7 @@ import auth from './auth'
 import threads from './threads'
 import posts from './posts'
 import mount from 'koa-mount'
-
-const secret = 'super-secret-token-whawoaw'
+import secrets from './secrets'
 
 const app = koa()
 
@@ -19,7 +18,7 @@ app.use(logger())
 app.use(function*(next) {
 	var token = this.cookies.get('auth')
 
-	var userid = token ? yield auth.verify(token, secret) : false
+	var userid = token ? yield auth.verify(token, secrets.jwt) : false
 
 	if (userid)
 		this.user = yield auth.getUser(userid)

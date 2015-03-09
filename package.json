@@ -1,7 +1,7 @@
 {
-  "name": "Port",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Portfolio",
+  "version": "0.0.1",
+  "description": "My personal blog",
   "main": "server/index.js",
   "scripts": {
     "start": "babel-node .",

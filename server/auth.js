@@ -3,9 +3,9 @@ import wrap from 'co-monk'
 import jwt from 'jsonwebtoken'
 import assign from 'object-assign'
 import Router from 'koa-router'
+import secrets from './secrets'
 
 const db = monk('localhost/superTest')
-const secret = 'super-secret-token-whawoaw'
 
 const Users = wrap(db.get('users'))
 
@@ -26,7 +26,7 @@ const Auth = {
 
 	verify(token) {
 		return new Promise(function(resolve, reject) {
-			jwt.verify(token, secret, function(err, data) {
+			jwt.verify(token, secrets.jwt, function(err, data) {
 				if (err)
 					return reject(err)
 
@@ -86,7 +86,7 @@ Auth.routes = new Router()
 
 		var creds = yield parse(this)
 		var user = yield auth.login(creds)
-		var token = jwt.sign(user._id, secret)
+		var token = jwt.sign(user._id, secrets.jwt)
 
 		this.cookies.set('auth', token)
 		this.status = 200
@@ -97,7 +97,7 @@ Auth.routes = new Router()
 
 		var creds = yield parse(this)
 		var user = yield auth.signup(creds)
-		var token = jwt.sign(user._id, secret)
+		var token = jwt.sign(user._id, secrets.jwt)
 
 		this.cookies.set('auth', token)
 		this.status = 200

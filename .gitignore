@@ -1,0 +1,7 @@
+npm-debug.log
+/node_modules
+/doc/*/npm-index.md
+/data
+/public/bower
+.DS_Store
+/server/secrets.js

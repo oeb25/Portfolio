@@ -16,7 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-material-design": "~0.2.2",
     "bootstrap": "~3.3.2"
   }
 }
