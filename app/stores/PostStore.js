@@ -7,6 +7,7 @@ const CHANGE_EVENT = 'change'
 
 var _allPosts = []
 var _posts = {}
+var _tags = []
 
 class PostStore extends EventEmitter {
 
@@ -16,6 +17,10 @@ class PostStore extends EventEmitter {
 
 	get(id) {
 		return _posts[id]
+	}
+
+	getAllTags() {
+		return _tags
 	}
 
 	addChangeListener(cb) {
@@ -42,6 +47,10 @@ PostStore.prototype.dispatchToken = ChatDispatcher.register(function(action) {
 			break
 		case PostConstants.FETCH_SINGLE:
 			_posts[action.post._id] = action.post
+			_PostStore.emitChange()
+			break
+		case PostConstants.TAGS:
+			_tags = action.tags
 			_PostStore.emitChange()
 			break
 	}

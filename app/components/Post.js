@@ -15,7 +15,6 @@ export default class Post extends React.Component {
 		this.state = getPost()
 
 		this._onChange = this._onChange.bind(this)
-		this.handleChange = this.handleChange.bind(this)
 	}
 
 	componentDidMount() {
@@ -27,10 +26,6 @@ export default class Post extends React.Component {
 		PostStore.removeChangeListener(this._onChange)
 	}
 
-	handleChange(e) {
-		this.setState({ swag: e.target.value })
-	}
-
 	_onChange() {
 		this.setState(getPost(this.props.id))
 	}
@@ -38,12 +33,9 @@ export default class Post extends React.Component {
 	render() {
 		return (
 			<div>
+				<h1>{this.state.post.title}</h1>
 				<div className='well'>
-					<Markdown text={this.state.post.content}/>
-				</div>
-				<div className='well'>
-					<textarea value={this.state.swag} onChange={this.handleChange}></textarea>
-					<Markdown text={this.state.swag}/>
+					<Markdown>{this.state.post.text}</Markdown>
 				</div>
 			</div>
 		)

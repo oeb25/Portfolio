@@ -9,7 +9,7 @@ function getCurrentRoute() {
 	return { route: Store.getCurrentRoute() }
 }
 
-export default class Route extends React.Component {
+export class Route extends React.Component {
 
 	constructor() {
 		this.state = getCurrentRoute()

@@ -22,9 +22,9 @@ export default class Header extends React.Component {
 		return (
 			<div>
 				<Navbar>
-					<Link list={true} to="/posts">Posts</Link>
-					<Link list={true} to="/works">Works</Link>
-					<Link list={true} to="/contact">Contact</Link>
+					<Link list={true} to="/posts">Blog</Link>
+					<Link list={true} to="/works">Portfolio</Link>
+					<Link list={true} to="/contact">Kontakt</Link>
 					<Link list={true} to="/login">Admin</Link>
 				</Navbar>
 			</div>

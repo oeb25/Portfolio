@@ -3,6 +3,8 @@ import Link from './Route/Link'
 import Post from './Post'
 import PostStore from '../stores/PostStore'
 import PostActions from '../actions/PostActions'
+import assign from 'object-assign'
+import Checklist from './Checklist'
 
 function getAllPosts() {
 	return { posts: PostStore.getAll() }
@@ -31,20 +33,13 @@ export default class PostList extends React.Component {
 
 	render() {
 		var posts = this.state.posts.map(post =>
-			<div>
+			<div key={post._id}>
 				<div className='list-group-item'>
-					<div className='row-action-primary'>
-						<i className='mdi-image-blur-on'/>
-					</div>
 					<div className='row-content'>
-						<div className='least-content'>15m</div>
-						<h4 key={post._id} className='list-group-item-heading'>
-							<Link to={`/post/${post._id}`}>{post.title}</Link>
-						</h4>
-						<p className='list-group-item-text'>Swag swag swag</p>
+						<Link to={`/post/${post._id}`}>{post.title}</Link>
 					</div>
 				</div>
-				<div className='list-group-separator'></div>
+				<hr/>
 			</div>
 		)
 

@@ -1,62 +1,67 @@
 import React from 'react'
 import $ from 'superagent'
+import Markdown from './Markdown'
+import PostActions from '../actions/PostActions'
 
 export default class Login extends React.Component {
 
-	constructor() { }
-
-	handleLogin(e) {
-		e.preventDefault()
-
-		var credentials = {
-			username: e.target.username.value,
-			password: e.target.password.value
+	constructor() {
+		this.state = {
+			text: ''
 		}
 
-		$.post('/login', credentials, function(){})
+		this.handleChange = this.handleChange.bind(this)
 	}
 
-	handleSignup(e) {
+	handleChange(e) {
+		this.setState({
+			text: e.target.value
+		})
+	}
+
+	handleSubmit(e) {
 		e.preventDefault()
 
-		var credentials = {
-			username: e.target.username.value,
-			password: e.target.password.value
-		}
+		var title = e.target.title.value
+		var password = e.target.password.value
+		var text = e.target.text.value
 
-		console.log(credentials)
+		var post = { title, text }
 
-		$.post('/signup', credentials, function(){})
+		PostActions.createPost(post, password)
 	}
 
 	render() {
 		return (
 			<div>
-				<form class="form-horizontal">
-					<fieldset>
-						<legend>Login</legend>
-						<div class="form-group">
-							<label for="inputEmail" class="col-lg-2 control-label">Email</label>
-							<div class="col-lg-10">
-								<input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="inputPassword" class="col-lg-2 control-label">Password</label>
-							<div class="col-lg-10">
-								<input type="password" class="form-control" id="inputPassword" placeholder="Password"/>
-							</div>
-						</div>
-					</fieldset>
-				</form>
-				<form onSubmit={this.handleLogin.bind(this)}>
-					<div className="form-control-wrapper">
-						<input className="form-control empty" name="username" type="email"/>
-						<div class="floating-label">email</div>
-						<input name="password" type="password"/>
-
-						<button type="submit">Login</button>
+				<form onSubmit={this.handleSubmit}>
+					<legend>Skriv Blogpost</legend>
+					<div className='form-group'>
+						<label for='title'>Titel</label>
+						<input type='title' className='form-control'
+							name='title' placeholder='Titel'/>
 					</div>
+					<div class='form-group'>
+						<label for='password'>Password</label>
+						<input type='password' className='form-control'
+							name='password' placeholder='Password'/>
+					</div>
+					<div className='row'>
+						<h3>Tekst</h3>
+						<div className='col-md-6'>
+							<label for='text'>Markdown</label>
+							<textarea name='text' onChange={this.handleChange} row='10'
+								className='form-control'></textarea>
+						</div>
+						<div className='col-md-6'>
+							<label for='postContent'>Output</label>
+							<Markdown>{this.state.text}</Markdown>
+						</div>
+					</div>
+					<br/>
+					<button className='btn btn-lg btn-success' type='submit'>
+						Lav Blogpost
+					</button>
 				</form>
 			</div>
 		)

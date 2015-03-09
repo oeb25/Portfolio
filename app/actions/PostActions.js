@@ -23,6 +23,23 @@ export default {
 				})
 			}
 		})
+	},
+
+	createPost(post, password) {
+		$.post('/posts', { post, password }, data => {
+			console.log(data.body, 'works')
+		})
+	},
+
+	getAllTags() {
+		$.get('/posts/tags', data => {
+
+			if (!data.error)
+				ChatDispatcher.dispatch({
+					type: PostConstants.TAGS,
+					tags: data.body
+				})
+		})
 	}
 
 }

@@ -14,5 +14,6 @@ export const PostConstants = {
 
 	FETCH_SINGLE: 'fetched single post',
 	FETCH: 'fetched all posts',
+	TAGS: 'fetched tags from server'
 
 }
