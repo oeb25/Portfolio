@@ -3,6 +3,7 @@ import _ from 'lodash'
 
 var md = new Remarkable({
 	linkify: true,
+	html: true,
 	typographer:  true
 })
 

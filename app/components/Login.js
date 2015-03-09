@@ -2,6 +2,7 @@ import React from 'react'
 import $ from 'superagent'
 import Markdown from './Markdown'
 import PostActions from '../actions/PostActions'
+import Link from './Route/Link'
 
 export default class Login extends React.Component {
 
@@ -29,6 +30,8 @@ export default class Login extends React.Component {
 		var post = { title, text }
 
 		PostActions.createPost(post, password)
+
+		Link.goTo('/posts')
 	}
 
 	render() {

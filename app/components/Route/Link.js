@@ -55,3 +55,7 @@ export default class Link extends React.Component {
 	}
 
 }
+
+Link.goTo = function(to) {
+	Actions.goTo(to)
+}

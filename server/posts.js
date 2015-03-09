@@ -46,6 +46,9 @@ routes
 	.post('/', function*() {
 		var { post: input, password } = yield parse(this)
 
+		if (password !== 'sick sick m8')
+			return this.status = 403
+
 		var post = yield Posts.insert(assign(PostModel, input))
 
 		this.body = post

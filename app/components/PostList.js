@@ -39,7 +39,6 @@ export default class PostList extends React.Component {
 						<Link to={`/post/${post._id}`}>{post.title}</Link>
 					</div>
 				</div>
-				<hr/>
 			</div>
 		)
 
