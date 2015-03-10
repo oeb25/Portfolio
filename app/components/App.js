@@ -10,6 +10,7 @@ import Contact from './Contact'
 import Portfolio from './Portfolio'
 import Markdown from './Markdown'
 import welcome from '../content/welcome.dk.md'
+import NotFound from './404.js'
 
 export default class App extends React.Component {
 
@@ -25,7 +26,7 @@ export default class App extends React.Component {
 						<When url='/login'><Login/></When>
 						<When url='/post/:id'><Post/></When>
 						<When url='/posts'><PostList/></When>
-						<Default><h1>404</h1></Default>
+						<Default><NotFound/></Default>
 					</Route>
 				</div>
 			</div>

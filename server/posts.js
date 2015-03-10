@@ -21,7 +21,6 @@ const PostModel = {
 	title: 'undefined title',
 	comments: [],
 	tags: [],
-	_id: undefined,
 	text: 'undefined text'
 }
 

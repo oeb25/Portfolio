@@ -33,13 +33,7 @@ export default class PostList extends React.Component {
 
 	render() {
 		var posts = this.state.posts.map(post =>
-			<div key={post._id}>
-				<div className='list-group-item'>
-					<div className='row-content'>
-						<Link to={`/post/${post._id}`}>{post.title}</Link>
-					</div>
-				</div>
-			</div>
+			<Link key={post._id} className='list-group-item' to={`/post/${post._id}`}>{post.title}</Link>
 		)
 
 		return (

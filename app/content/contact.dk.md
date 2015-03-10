@@ -8,7 +8,7 @@
 
 ## Om mig
 
-Mit navn er Oliver Emil Bøving, jeg er født i 1997, og går på HTX TEC i Kongen Lyngby.
+Mit navn er Oliver Emil Bøving, jeg er født i 1997, og går på HTX TEC i Kongen Lyngby. Jeg har stor interasse indenfor kodning og shizzle
 
 ## Sidens primere mål
 

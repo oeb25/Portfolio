@@ -28,7 +28,7 @@ export default class Markdown extends React.Component {
 		} catch(e) { }
 
 		return (
-			<div dangerouslySetInnerHTML={{ __html: md.render(str) }}></div>
+			<div className={this.props.className} dangerouslySetInnerHTML={{ __html: md.render(str) }}></div>
 		)
 	}
 
